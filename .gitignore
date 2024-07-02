@@ -1,0 +1,16 @@
+*/syn/*
+!*/syn/synthesis.sh
+!*/syn/remove_tmp.sh
+lib2db
+!template/lib2db
+
+# for uBlock
+*/*/syn/*
+!*/*/syn/synthesis.sh
+!*/*/syn/remove_tmp.sh
+*/*/lib2db
+*.log
+*/*/*/syn/*
+!*/*/*/syn/synthesis.sh
+!*/*/*/syn/remove_tmp.sh
+*/*/*/lib2db
