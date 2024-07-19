@@ -29,7 +29,7 @@ module TwoSbox(
 	input [7:0] in2,
 	input [7:0] in3,
 	
-	input EN,
+	// input EN,
 	input [89:0] r,
 
 	
@@ -49,7 +49,7 @@ module TwoSbox(
     .in2(in2[3:0]), 
     .in3(in3[3:0]), 
     .r(r[44:0]), 
-    .EN(EN), 
+    // .EN(EN), 
     .rs_in(rs2), 
     .rs_out(rs1), 
     .out1(out1[3:0]), 
@@ -63,7 +63,7 @@ module TwoSbox(
     .in2(in2[7:4]), 
     .in3(in3[7:4]), 
     .r(r[89:45]), 
-	 .EN(EN), 
+	 // .EN(EN), 
 	 .rs_in(rs1), 
     .rs_out(rs2),  
     .out1(out1[7:4]), 

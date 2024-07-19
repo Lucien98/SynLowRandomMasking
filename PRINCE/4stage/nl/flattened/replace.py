@@ -23,6 +23,7 @@ varwidth = {'sboxIn': 8,
 wire = ['mappedxD']
 
 def d1wireTo_ (s):
+	print(s)
 	for w in wire:
 		match = "(?<!(n))%s\\[(\\d+)\\]" % w
 		match_list = re.search(match, s) 
@@ -30,6 +31,7 @@ def d1wireTo_ (s):
 		match = "%s\\[(\\d+)\\]" % w
 		substi = "%s_\\1_" % w
 		s = re.sub(match, substi, s)
+	print(s)
 	return s
 
 def d2indexTod1index (s):
@@ -56,7 +58,7 @@ def d2indexTod1index (s):
 
 def main(): 
 
-	f_name = "aes_sbox_cms1"
+	f_name = "PRINCE_Sbox_Inverse"
 	f = open(f_name + ".v", "r")
 	f_o = open(f_name + "_s.v", "w")
 	line = f.readline()
@@ -85,9 +87,13 @@ def main():
 		s = d2indexTod1index(s)
 		# print(s)
 		# 6
-		s = re.sub(r'\[(\d+)\]\[(\d+)\]\[(\d+)\]', r'_\1__\2__\3_', s)
-		# 7
-		s = re.sub(r'\[(\d+)\]\[(\d+)\]', r'_\1__\2_', s)
+		# s = re.sub(r'\[(\d+)\]\[(\d+)\]\[(\d+)\]', r'_\1__\2__\3_', s)
+		# # 7
+		# s = re.sub(r'\[(\d+)\]\[(\d+)\]', r'_\1__\2_', s)
+		s = re.sub(r'Inst\[(\d+)\]', r'Inst_\1_', s)
+		s = re.sub(r'InstXOR\[(\d+)\]', r'InstXOR_\1_', s)
+		# dXORc_reg
+		s = re.sub(r'dXORc_reg\[(\d+)\]', r'dXORc_reg_\1_', s)
 		# 8
 		s = d1wireTo_ (s)
 		# write file

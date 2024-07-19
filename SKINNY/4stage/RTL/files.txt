@@ -1,0 +1,5 @@
+analyze -format verilog  {../RTL/CF.v}
+analyze -format verilog  {../RTL/Q294_2order.v}
+analyze -format verilog  {../RTL/SKINNYAffines.v}
+analyze -format verilog  {../RTL/SKINNY_Sbox.v}
+analyze -format verilog  {../RTL/XOR_3.v}

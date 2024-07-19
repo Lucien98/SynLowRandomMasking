@@ -8,28 +8,23 @@ set link_library [concat "*" $target_library]
 get_libs
 
 # read verilog file
-analyze -format verilog  {../RTL/XOR_2n.v}
-analyze -format verilog  {../RTL/XOR_3n.v}
+analyze -format verilog  {../RTL/CF.v}
+analyze -format vhdl  {../RTL/InAffC.vhd}
+analyze -format vhdl  {../RTL/InAff.vhd}
+analyze -format vhdl  {../RTL/M1AffC.vhd}
+analyze -format vhdl  {../RTL/M1Aff.vhd}
+analyze -format vhdl  {../RTL/M2AffC.vhd}
+analyze -format vhdl  {../RTL/M2Aff.vhd}
+analyze -format vhdl  {../RTL/OutAffC.vhd}
+analyze -format vhdl  {../RTL/OutAff.vhd}
+analyze -format verilog  {../RTL/PRINCE_Sbox_Inverse.v}
+analyze -format verilog  {../RTL/Q294_2order.v}
 analyze -format verilog  {../RTL/XOR_3.v}
-analyze -format verilog  {../RTL/Affine_input.v}
-analyze -format verilog  {../RTL/Affine_output.v}
-analyze -format verilog  {../RTL/Func1_Down_2OM_CF.v}
-analyze -format verilog  {../RTL/Func1_Down_2OM.v}
-analyze -format verilog  {../RTL/Func1_Up_2OM_CF.v}
-analyze -format verilog  {../RTL/Func1_Up_2OM.v}
-analyze -format verilog  {../RTL/G16_inv_2OM.v}
-analyze -format verilog  {../RTL/G16_sq_scl.v}
-analyze -format verilog  {../RTL/GF4_MUL_2OM_CF.v}
-analyze -format verilog  {../RTL/GF4_MUL_2OM.v}
-analyze -format verilog  {../RTL/Mult_GF16.v}
-analyze -format verilog  {../RTL/Masked_Mult_GF16.v}
-analyze -format verilog  {../RTL/TheFifthStage.v}
-analyze -format verilog  {../RTL/AESSbox_2OM.v}
 
-elaborate AESSbox_2OM
+elaborate PRINCE_Sbox_Inverse
 
 
-current_design AESSbox_2OM
+current_design PRINCE_Sbox_Inverse
 
 set_dont_use [get_lib_cells ${lib_name}/FA*]
 set_dont_use [get_lib_cells ${lib_name}/HA*]
@@ -50,7 +45,7 @@ set_dont_use [get_lib_cells ${lib_name}/BUF*]
 compile -map_effort medium -area_effort medium
 compile_ultra -no_autoungroup
 
-write -format verilog -hierarchy -output ../nl/unflattened/AESSbox_2OM.v
+write -format verilog -hierarchy -output ../nl/unflattened/PRINCE_Sbox_Inverse.v
 
 ungroup -all -flatten
-write -format verilog -hierarchy -output ../nl/flattened/AESSbox_2OM.v
+write -format verilog -hierarchy -output ../nl/flattened/PRINCE_Sbox_Inverse.v

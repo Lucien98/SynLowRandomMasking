@@ -27,7 +27,7 @@ module Present_Sbox(
   (* SILVER = "[3:0]_0" *) input [3:0] in1,
   (* SILVER = "[3:0]_1" *) input [3:0] in2,
   (* SILVER = "[3:0]_2" *) input [3:0] in3,
-									 input EN,
+									 // input EN,
   (* SILVER = "refresh" *) input [44:0] r,
   (* SILVER = "refresh" *) input [7:0] rs_in,
   (* SILVER = "refresh" *) output [7:0] rs_out,
@@ -65,11 +65,11 @@ module Present_Sbox(
     .y3(InAff_out3) );
 	 
 	 always @(posedge clk) begin
-		if(EN) begin
+		// if(EN) begin
 			InAff_out1_reg <= InAff_out1;
 			InAff_out2_reg <= InAff_out2;
 			InAff_out3_reg <= InAff_out3;
-		end
+		// end
 	 end
 	 
 	 assign rs_out = {InAff_out1_reg, InAff_out2_reg};

@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////
 // Created by: Synopsys DC Ultra(TM) in wire load mode
 // Version   : L-2016.03-SP1
-// Date      : Mon Jul  1 23:29:50 2024
+// Date      : Tue Jul  2 00:38:02 2024
 /////////////////////////////////////////////////////////////
 
 
@@ -1642,23 +1642,19 @@ module G_2order ( clk, in1, in2, in3, r, out1, out2, out3 );
 endmodule
 
 
-module Present_Sbox ( clk, in1, in2, in3, EN, r, rs_in, rs_out, out1, out2, 
-        out3 );
+module Present_Sbox ( clk, in1, in2, in3, r, rs_in, rs_out, out1, out2, out3
+ );
  (* SILVER = "clock" *) input clk;
   (* SILVER = "[3:0]_0" *) input [3:0] in1;
   (* SILVER = "[3:0]_1" *) input [3:0] in2;
   (* SILVER = "[3:0]_2" *) input [3:0] in3;
-  (* SILVER = "control" *) input EN;
   (* SILVER = "refresh" *) input [44:0] r;
   (* SILVER = "refresh" *) input [7:0] rs_in;
-  (* SILVER = "refresh" *) output [7:0] rs_out;
-
+  (* SILVER = "[11:4]_0" *) output [7:0] rs_out;
   (* SILVER = "[3:0]_0" *) output  [3:0] out1;
   (* SILVER = "[3:0]_1" *) output  [3:0] out2;
   (* SILVER = "[3:0]_2" *) output  [3:0] out3;
-  wire   n26, n27, n28, n29, n30, n31, n32, n33, n34, n35, n36, n37, n88, n89,
-         n90, n91, n92, n93, n94, n95, n96, n97, n98, n99, n100, n101, n102,
-         n103, n104, n105, n106, n107, n108, n109, n110, n111, n112;
+
   wire   [3:0] InAff_out1;
   wire   [3:0] InAff_out2;
   wire   [3:0] InAff_out3;
@@ -1674,54 +1670,29 @@ module Present_Sbox ( clk, in1, in2, in3, EN, r, rs_in, rs_out, out1, out2,
         Q12_1_out2), .out3(Q12_1_out3) );
   G_2order G_inst ( .clk(clk), .in1(Q12_1_out1), .in2(Q12_1_out2), .in3(
         Q12_1_out3), .r(r[44:27]), .out1(out1), .out2(out2), .out3(out3) );
-  DFF_X1 \InAff_out2_reg_reg[3]  ( .D(n37), .CK(clk), .Q(rs_out[3]) );
-  DFF_X1 \InAff_out2_reg_reg[2]  ( .D(n36), .CK(clk), .Q(rs_out[2]) );
-  DFF_X1 \InAff_out2_reg_reg[1]  ( .D(n35), .CK(clk), .Q(rs_out[1]) );
-  DFF_X1 \InAff_out2_reg_reg[0]  ( .D(n34), .CK(clk), .Q(rs_out[0]) );
-  DFF_X1 \InAff_out3_reg_reg[3]  ( .D(n33), .CK(clk), .Q(InAff_out3_reg[3]) );
-  DFF_X1 \InAff_out3_reg_reg[2]  ( .D(n32), .CK(clk), .Q(InAff_out3_reg[2]) );
-  DFF_X1 \InAff_out3_reg_reg[1]  ( .D(n31), .CK(clk), .Q(InAff_out3_reg[1]) );
-  DFF_X1 \InAff_out3_reg_reg[0]  ( .D(n30), .CK(clk), .Q(InAff_out3_reg[0]) );
-  DFF_X1 \InAff_out1_reg_reg[3]  ( .D(n29), .CK(clk), .Q(rs_out[7]) );
-  DFF_X1 \InAff_out1_reg_reg[2]  ( .D(n28), .CK(clk), .Q(rs_out[6]) );
-  DFF_X1 \InAff_out1_reg_reg[1]  ( .D(n27), .CK(clk), .Q(rs_out[5]) );
-  DFF_X1 \InAff_out1_reg_reg[0]  ( .D(n26), .CK(clk), .Q(rs_out[4]) );
-  NAND2_X1 U76 ( .A1(EN), .A2(InAff_out2[3]), .ZN(n89) );
-  INV_X1 U77 ( .A(EN), .ZN(n110) );
-  NAND2_X1 U78 ( .A1(rs_out[3]), .A2(n110), .ZN(n88) );
-  NAND2_X1 U79 ( .A1(n89), .A2(n88), .ZN(n37) );
-  NAND2_X1 U80 ( .A1(EN), .A2(InAff_out2[2]), .ZN(n91) );
-  NAND2_X1 U81 ( .A1(rs_out[2]), .A2(n110), .ZN(n90) );
-  NAND2_X1 U82 ( .A1(n91), .A2(n90), .ZN(n36) );
-  NAND2_X1 U83 ( .A1(EN), .A2(InAff_out2[1]), .ZN(n93) );
-  NAND2_X1 U84 ( .A1(rs_out[1]), .A2(n110), .ZN(n92) );
-  NAND2_X1 U85 ( .A1(n93), .A2(n92), .ZN(n35) );
-  NAND2_X1 U86 ( .A1(EN), .A2(InAff_out2[0]), .ZN(n95) );
-  NAND2_X1 U87 ( .A1(rs_out[0]), .A2(n110), .ZN(n94) );
-  NAND2_X1 U88 ( .A1(n95), .A2(n94), .ZN(n34) );
-  NAND2_X1 U89 ( .A1(EN), .A2(InAff_out3[3]), .ZN(n97) );
-  NAND2_X1 U90 ( .A1(InAff_out3_reg[3]), .A2(n110), .ZN(n96) );
-  NAND2_X1 U91 ( .A1(n97), .A2(n96), .ZN(n33) );
-  NAND2_X1 U92 ( .A1(EN), .A2(InAff_out3[2]), .ZN(n99) );
-  NAND2_X1 U93 ( .A1(InAff_out3_reg[2]), .A2(n110), .ZN(n98) );
-  NAND2_X1 U94 ( .A1(n99), .A2(n98), .ZN(n32) );
-  NAND2_X1 U95 ( .A1(EN), .A2(InAff_out3[1]), .ZN(n101) );
-  NAND2_X1 U96 ( .A1(InAff_out3_reg[1]), .A2(n110), .ZN(n100) );
-  NAND2_X1 U97 ( .A1(n101), .A2(n100), .ZN(n31) );
-  NAND2_X1 U98 ( .A1(EN), .A2(InAff_out3[0]), .ZN(n103) );
-  NAND2_X1 U99 ( .A1(InAff_out3_reg[0]), .A2(n110), .ZN(n102) );
-  NAND2_X1 U100 ( .A1(n103), .A2(n102), .ZN(n30) );
-  NAND2_X1 U101 ( .A1(EN), .A2(InAff_out1[3]), .ZN(n105) );
-  NAND2_X1 U102 ( .A1(rs_out[7]), .A2(n110), .ZN(n104) );
-  NAND2_X1 U103 ( .A1(n105), .A2(n104), .ZN(n29) );
-  NAND2_X1 U104 ( .A1(EN), .A2(InAff_out1[2]), .ZN(n107) );
-  NAND2_X1 U105 ( .A1(rs_out[6]), .A2(n110), .ZN(n106) );
-  NAND2_X1 U106 ( .A1(n107), .A2(n106), .ZN(n28) );
-  NAND2_X1 U107 ( .A1(EN), .A2(InAff_out1[1]), .ZN(n109) );
-  NAND2_X1 U108 ( .A1(rs_out[5]), .A2(n110), .ZN(n108) );
-  NAND2_X1 U109 ( .A1(n109), .A2(n108), .ZN(n27) );
-  NAND2_X1 U110 ( .A1(EN), .A2(InAff_out1[0]), .ZN(n112) );
-  NAND2_X1 U111 ( .A1(rs_out[4]), .A2(n110), .ZN(n111) );
-  NAND2_X1 U112 ( .A1(n112), .A2(n111), .ZN(n26) );
+  DFF_X1 \InAff_out1_reg_reg[3]  ( .D(InAff_out1[3]), .CK(clk), .Q(rs_out[7])
+         );
+  DFF_X1 \InAff_out1_reg_reg[2]  ( .D(InAff_out1[2]), .CK(clk), .Q(rs_out[6])
+         );
+  DFF_X1 \InAff_out1_reg_reg[1]  ( .D(InAff_out1[1]), .CK(clk), .Q(rs_out[5])
+         );
+  DFF_X1 \InAff_out1_reg_reg[0]  ( .D(InAff_out1[0]), .CK(clk), .Q(rs_out[4])
+         );
+  DFF_X1 \InAff_out2_reg_reg[3]  ( .D(InAff_out2[3]), .CK(clk), .Q(rs_out[3])
+         );
+  DFF_X1 \InAff_out2_reg_reg[2]  ( .D(InAff_out2[2]), .CK(clk), .Q(rs_out[2])
+         );
+  DFF_X1 \InAff_out2_reg_reg[1]  ( .D(InAff_out2[1]), .CK(clk), .Q(rs_out[1])
+         );
+  DFF_X1 \InAff_out2_reg_reg[0]  ( .D(InAff_out2[0]), .CK(clk), .Q(rs_out[0])
+         );
+  DFF_X1 \InAff_out3_reg_reg[3]  ( .D(InAff_out3[3]), .CK(clk), .Q(
+        InAff_out3_reg[3]) );
+  DFF_X1 \InAff_out3_reg_reg[2]  ( .D(InAff_out3[2]), .CK(clk), .Q(
+        InAff_out3_reg[2]) );
+  DFF_X1 \InAff_out3_reg_reg[1]  ( .D(InAff_out3[1]), .CK(clk), .Q(
+        InAff_out3_reg[1]) );
+  DFF_X1 \InAff_out3_reg_reg[0]  ( .D(InAff_out3[0]), .CK(clk), .Q(
+        InAff_out3_reg[0]) );
 endmodule
 

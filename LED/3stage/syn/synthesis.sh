@@ -13,14 +13,14 @@ analyze -format verilog  {../RTL/CF_G.v}
 analyze -format verilog  {../RTL/F_2order.v}
 analyze -format verilog  {../RTL/G_2order.v}
 analyze -format verilog  {../RTL/PresentAffines.v}
-analyze -format verilog  {../RTL/Present_Sbox.v}
+analyze -format verilog  {../RTL/TwoSbox.v}
 analyze -format verilog  {../RTL/TwoSbox.v}
 analyze -format verilog  {../RTL/XOR_3.v}
 
-elaborate Present_Sbox
+elaborate TwoSbox
 
 
-current_design Present_Sbox
+current_design TwoSbox
 
 set_dont_use [get_lib_cells ${lib_name}/FA*]
 set_dont_use [get_lib_cells ${lib_name}/HA*]
@@ -41,7 +41,7 @@ set_dont_use [get_lib_cells ${lib_name}/BUF*]
 compile -map_effort medium -area_effort medium
 compile_ultra -no_autoungroup
 
-write -format verilog -hierarchy -output ../nl/unflattened/Present_Sbox.v
+write -format verilog -hierarchy -output ../nl/unflattened/TwoSbox.v
 
 ungroup -all -flatten
-write -format verilog -hierarchy -output ../nl/flattened/Present_Sbox.v
+write -format verilog -hierarchy -output ../nl/flattened/TwoSbox.v
