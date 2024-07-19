@@ -9,25 +9,6 @@
   (* SILVER = "[3:0]_2" *) output  [3:0] out3;
   (* SILVER = "clock" *) input clk;
 
-  input [3:0] in1;
-  input [3:0] in2;
-  input [3:0] in3;
-  input [44:0] r;
-  input [5:0] rs_in;
-  output [5:0] rs_out;
-  output [3:0] out1;
-  output [3:0] out2;
-  output [3:0] out3;
-  input clk;
-
-  input [7:0] in1;
-  input [7:0] in2;
-  input [7:0] in3;
-  input [89:0] r;
-  output [7:0] out1;
-  output [7:0] out2;
-  output [7:0] out3;
-  input clk;
 (* SILVER="[7:0]_0" *)  input [7:0] in1;
 (* SILVER="[7:0]_1" *)  input [7:0] in2;
 (* SILVER="[7:0]_2" *)  input [7:0] in3;

@@ -1,11 +1,3 @@
-  input [3:0] in1;
-  input [3:0] in2;
-  input [3:0] in3;
-  input [37:0] r;
-  output [3:0] out1;
-  output [3:0] out2;
-  output [3:0] out3;
-  input clk;
 
   (* SILVER = "[3:0]_0" *) input [3:0] in1;
   (* SILVER = "[3:0]_1" *) input [3:0] in2;

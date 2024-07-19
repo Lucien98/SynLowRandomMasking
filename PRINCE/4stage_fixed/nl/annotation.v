@@ -1,15 +1,3 @@
-  input [3:0] in1;
-  input [3:0] in2;
-  input [3:0] in3;
-  input [41:0] r;
-  input [3:0] klmn_in1;
-  input [5:0] klmn_in2;
-  output [5:0] klmn_out1;
-  output [3:0] out1;
-  output [3:0] out2;
-  output [3:0] out3;
-  input clk;
-
   (* SILVER = "[3:0]_0" *) input [3:0] in1;
   (* SILVER = "[3:0]_1" *) input [3:0] in2;
   (* SILVER = "[3:0]_2" *) input [3:0] in3;
@@ -22,14 +10,6 @@
   (* SILVER = "[3:0]_2" *) output  [3:0] out3;
   (* SILVER = "clock" *) input clk;
 
-  input [15:0] in1;
-  input [15:0] in2;
-  input [15:0] in3;
-  input [167:0] r;
-  output [15:0] out1;
-  output [15:0] out2;
-  output [15:0] out3;
-  input clk;
 (* SILVER="[15:0]_0" *)  input [15:0] in1;
 (* SILVER="[15:0]_1" *)  input [15:0] in2;
 (* SILVER="[15:0]_2" *)  input [15:0] in3;
